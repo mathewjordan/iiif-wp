@@ -37,6 +37,8 @@ endif;
     .iiif-wp-actions {
         display: flex;
         flex-direction: column;
+        font-size: 0.85em;
+        margin-top: 1em;
     }
 
 </style>
