@@ -17,15 +17,15 @@ if (is_array($context)) :
         $label = $manifest->label->en[0];
         $summary = $manifest->summary->en[0];
         $canvas = $manifest->items[0]->items[0]->items[0]->body->id;
+        $canvas = str_replace('/full/full', '/full/!1000,1000', $canvas);
     endif;
 else :
     $presentation = 2;
     $label = $manifest->label;
     $summary = $manifest->decription;
     $canvas = $manifest->sequences[0]->canvases[0]->images[0]->resource->{'@id'};
+    $canvas = str_replace('/full/full', '/full/1000,1000', $canvas);
 endif;
-
-$canvas = str_replace('/full/full', '/full/!1000,1000', $canvas);
 
 ?>
 <style type="text/css">
@@ -36,9 +36,7 @@ $canvas = str_replace('/full/full', '/full/!1000,1000', $canvas);
 
     .iiif-wp-actions {
         display: flex;
-        justify-content: center;
-        font-size: 0.75rem;
-        text-transform: uppercase;
+        flex-direction: column;
     }
 
 </style>
