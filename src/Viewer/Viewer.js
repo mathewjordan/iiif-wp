@@ -16,7 +16,30 @@ class Viewer extends Component {
         const viewer = container.getAttribute('data-viewer');
 
         if (viewer === 'mirador') {
-             return <Mirador manifest={manifest} />
+
+            const config = {
+                id: this.props.blockId,
+                window: {
+                    allowFullscreen: false,
+                    sideBarPanel: 'info',
+                    hideWindowTitle: true,
+                    sideBarOpen: true,
+                    highlightAllAnnotations: true,
+                    forceDrawAnnotations: true,
+                },
+                windows: [
+                    {
+                        loadedManifest: this.props.manifest,
+                    },
+                ],
+                workspaceControlPanel: {
+                    enabled: false,
+                },
+            };
+
+            const plugins=[];
+
+            return <Mirador config={config} plugins={plugins} />
 
         } else if (viewer === 'uv') {
             return <UniversalViewer manifest={manifest} />
