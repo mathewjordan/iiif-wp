@@ -24,7 +24,7 @@ module.exports = {
     }),
   ],
   output: {
-    path: path.resolve(__dirname, '..', 'dist'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, '..', 'assets'),
+    filename: 'iiif-wp.js',
   },
 };
