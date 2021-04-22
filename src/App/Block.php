@@ -27,7 +27,7 @@ class Block
                 'title'             => __('IIIF WP'),
                 'description'       => __('A block for rendering IIIF-WP components.'),
                 'render_callback'   => [__CLASS__, 'acf_register_blocks_callback'],
-                'mode'              => 'edit',
+                'mode'              => 'auto',
                 'category'          => 'formatting',
             ));
         }

@@ -43,17 +43,24 @@ endif;
 
 </style>
 
-<div class="iiif-wp">
-    <figure>
-        <img src="<?php echo $canvas; ?>" alt="<?php echo $label; ?>" />
-        <figcaption>
-            <span><strong><?php echo $label; ?></strong></span>
-            <?php if ($summary) : ?>
-                <p><?php echo $summary; ?></p>
-            <?php endif; ?>
-        </figcaption>
-    </figure>
-    <div class="iiif-wp-actions">
-        <a href="#viewer">Expand in Viewer</a>
+<div class="iiif-wp"
+     id="<?php print $block['id']; ?>">
+    <div class="iiif-wp-viewer">
+        <?php print $fields['viewer']; ?>
     </div>
+    <?php if ($fields['mode'] === 'preview') : ?>
+        <figure>
+            <img src="<?php print $canvas; ?>"
+                 alt="<?php print $label; ?>" />
+            <figcaption>
+                <span><strong><?php print $label; ?></strong></span>
+                <?php if ($summary) : ?>
+                    <p><?php print $summary; ?></p>
+                <?php endif; ?>
+            </figcaption>
+        </figure>
+        <div class="iiif-wp-actions">
+            <a href="#viewer">Expand in Viewer</a>
+        </div>
+    <?php endif; ?>
 </div>
