@@ -11,20 +11,23 @@ class Viewer extends Component {
 
     render() {
 
-        const { manifest, viewer } = this.props
-
-        console.log(viewer)
+        const container = document.getElementById(this.props.blockId);
+        const manifest = container.getAttribute('data-manifest')
+        const viewer = container.getAttribute('data-viewer');
 
         if (viewer === 'mirador') {
              return <Mirador manifest={manifest} />
+
         } else if (viewer === 'uv') {
             return <UniversalViewer manifest={manifest} />
+
         } else {
             return (
                 <React.Fragment>
                     Viewer, "{viewer}" is not currently configured to work with IIIF-WP.
                 </React.Fragment>
             );
+
         }
     }
 }

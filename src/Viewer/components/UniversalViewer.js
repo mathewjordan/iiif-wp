@@ -7,7 +7,7 @@ class UniversalViewer extends Component {
         const { manifest } = this.props;
 
         return (
-            <div className="container">
+            <div>
                 UV yall
             </div>
         );
