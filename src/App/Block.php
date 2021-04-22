@@ -17,6 +17,7 @@ class Block
          */
 
         add_action('acf/init', [__CLASS__, 'iiifwp_blocks_init']);
+        add_action('wp_enqueue_scripts', [__CLASS__, 'iiifwp_enqueue']);
 
     }
 
@@ -43,6 +44,10 @@ class Block
             include( dirname(__FILE__) . "/components/block-{$slug}.php" );
         }
 
+    }
+
+    public static function iiifwp_enqueue(){
+        wp_enqueue_script('iiif-wp', plugin_dir_url(__FILE__) . '../../assets/iiif-wp.js', array(), '0.0.1', 'true' );
     }
 
 }
