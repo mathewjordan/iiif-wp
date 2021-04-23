@@ -34,7 +34,7 @@ endif;
         margin-bottom: 3em;
     }
 
-    .iiif-wp-actions {
+    .iiif-wp--actions {
         display: flex;
         flex-direction: column;
         font-size: 0.85em;
@@ -61,8 +61,8 @@ endif;
                 <?php endif; ?>
             </figcaption>
         </figure>
-<!--        <div class="iiif-wp-actions">-->
-<!--            <a href="#viewer">Expand in Viewer</a>-->
-<!--        </div>-->
+        <div class="iiif-wp-actions">
+            <a href="#viewer">Expand in Viewer</a>
+        </div>
     <?php endif; ?>
 </div>

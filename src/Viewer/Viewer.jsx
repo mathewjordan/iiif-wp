@@ -15,21 +15,25 @@ class Viewer extends Component {
         const manifest = container.getAttribute('data-manifest')
         const viewer = container.getAttribute('data-viewer');
 
+        console.log(manifest);
+
         if (viewer === 'mirador') {
 
             const config = {
                 id: this.props.blockId,
                 window: {
-                    allowFullscreen: false,
+                    allowClose: false,
+                    allowMaximize: true,
+                    allowFullscreen: true,
                     sideBarPanel: 'info',
-                    hideWindowTitle: true,
-                    sideBarOpen: true,
+                    hideWindowTitle: false,
+                    sideBarOpen: false,
                     highlightAllAnnotations: true,
                     forceDrawAnnotations: true,
                 },
                 windows: [
                     {
-                        loadedManifest: this.props.manifest,
+                        loadedManifest: manifest,
                     },
                 ],
                 workspaceControlPanel: {
