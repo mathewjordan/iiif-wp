@@ -1,5 +1,7 @@
 <?php
 
+use IIIFWP\App\Block;
+
 /**
  * Block Name: IIIF WP
  **/
@@ -39,4 +41,16 @@ endif;
          data-viewer="<?php print $fields['viewer']; ?>"
          data-mode="<?php print $fields['mode']; ?>">
     </div>
+    <?php if (Block::is_post_editor()) : ?>
+        <figure>
+            <img src="<?php print $preview; ?>"
+                 alt="<?php print $label; ?>" />
+            <figcaption>
+                <span><strong><?php print $label; ?></strong></span>
+                <?php if ($summary) : ?>
+                    <p><?php print $summary; ?></p>
+                <?php endif; ?>
+            </figcaption>
+        </figure>
+    <?php endif; ?>
 </div>

@@ -50,4 +50,18 @@ class Block
         wp_enqueue_script('iiif-wp', plugin_dir_url(__FILE__) . '../../assets/iiif-wp.js', array(), '0.0.1', 'true' );
     }
 
+    public static function is_post_editor() {
+
+        global $pagenow;
+
+        if (( $pagenow == 'admin-ajax.php' ) ) {
+            return true;
+
+        } else {
+            return  false;
+
+        }
+
+    }
+
 }
