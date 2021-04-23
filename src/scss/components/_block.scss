@@ -1,10 +1,12 @@
 .iiif-wp {
   &-viewer {
-    margin-bottom: 3em;
-    position: relative;
-    width: 100%;
-    min-height: 500px;
-    max-height: 90vh;
+    &-inner {
+      margin-bottom: 1em;
+      position: relative;
+      width: 100%;
+      min-height: 500px;
+      max-height: 90vh;
+    }
 
     .button:not(:hover):not(:active):not(.has-background), button:not(:hover):not(:active):not(.has-background), input[type="submit"]:not(:hover):not(:active):not(.has-background), input[type="reset"]:not(:hover):not(:active):not(.has-background), .wp-block-search .wp-block-search__button:not(:hover):not(:active):not(.has-background), .wp-block-button .wp-block-button__link:not(:hover):not(:active):not(.has-background), .wp-block-file a.wp-block-file__button:not(:hover):not(:active):not(.has-background) {
       background-color: unset;

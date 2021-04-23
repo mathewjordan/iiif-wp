@@ -10,6 +10,8 @@ class Viewer extends Component {
         this.state = {
             active: false
         }
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -28,16 +30,25 @@ class Viewer extends Component {
 
     }
 
+    handleClick() {
+        this.setState(state => ({
+            active: !state.active
+        }));
+    }
+
     render() {
 
         let {active, label, preview, summary, manifest, viewer, mode} = this.state
 
         if (this.props.blockId !== null) {
+
+            let target = this.props.blockId + '_viewer'
+
             if (active === true) {
                 if (viewer === 'mirador') {
 
                     const config = {
-                        id: blockId,
+                        id: target,
                         window: {
                             allowClose: false,
                             allowMaximize: true,
@@ -60,7 +71,17 @@ class Viewer extends Component {
 
                     const plugins=[];
 
-                    return <Mirador config={config} plugins={plugins} />
+                    return (
+                        <React.Fragment>
+                            <div className="iiif-wp-viewer-inner">
+                                <Mirador config={config} plugins={plugins} />
+                            </div>
+                            <a href="#" onClick={this.handleClick}>
+                                Close Viewer
+                                {this.state.active ? true : false}
+                            </a>
+                        </React.Fragment>
+                    )
 
                 } else if (viewer === 'uv') {
                     return <UniversalViewer manifest={manifest} />
@@ -79,7 +100,10 @@ class Viewer extends Component {
                         <div className="iiif-wp-preview">
                             <div className="iiif-wp-preview-inner">
                                 <img src={preview} alt={label} />
-                                <a href="#">Expand in Viewer</a>
+                                <a href="#" onClick={this.handleClick}>
+                                    Expand in Viewer
+                                    {this.state.active ? true : false}
+                                </a>
                             </div>
                         </div>
                         <figcaption>
