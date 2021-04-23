@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import "./../scss/style.scss";
+
 import Viewer from './Viewer';
 
 Array.prototype.forEach.call(

@@ -1,0 +1,14 @@
+.mirador-viewer {
+  .mosaic-root {
+  box-shadow: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  }
+
+  .mirador-viewer .mosaic-tile {
+    box-shadow: none;
+    margin: 0;
+  }
+}

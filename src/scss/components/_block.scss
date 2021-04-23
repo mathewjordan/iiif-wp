@@ -1,0 +1,62 @@
+.iiif-wp {
+  &-viewer {
+    margin-bottom: 3em;
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    max-height: 90vh;
+
+    .button:not(:hover):not(:active):not(.has-background), button:not(:hover):not(:active):not(.has-background), input[type="submit"]:not(:hover):not(:active):not(.has-background), input[type="reset"]:not(:hover):not(:active):not(.has-background), .wp-block-search .wp-block-search__button:not(:hover):not(:active):not(.has-background), .wp-block-button .wp-block-button__link:not(:hover):not(:active):not(.has-background), .wp-block-file a.wp-block-file__button:not(:hover):not(:active):not(.has-background) {
+      background-color: unset;
+      color: unset;
+    }
+  }
+
+  &-preview {
+    margin-bottom: 1em;
+    display: flex;
+
+    figure {
+      margin: 0;
+      padding: 0;
+    }
+
+    .iiif-wp-preview-inner {
+      display: flex;
+      background-color: blue;
+      position: relative;
+      overflow: hidden;
+
+      a {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-shrink: 1;
+        flex-grow: 0;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(#000, 0);
+        transition: all 190ms ease-in-out;
+        color: transparent;
+        font-size: 1.5em;
+
+        &:hover,
+        &:focus {
+          color: white;
+          background-color: rgba(0, 0, 0, 0.72);
+        }
+      }
+    }
+  }
+
+  .iiif-wp--actions {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85em;
+    margin-top: 1em;
+  }
+}
