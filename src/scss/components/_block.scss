@@ -8,6 +8,10 @@
       max-height: 90vh;
     }
 
+    > a {
+      cursor: pointer;
+    }
+
     .button:not(:hover):not(:active):not(.has-background), button:not(:hover):not(:active):not(.has-background), input[type="submit"]:not(:hover):not(:active):not(.has-background), input[type="reset"]:not(:hover):not(:active):not(.has-background), .wp-block-search .wp-block-search__button:not(:hover):not(:active):not(.has-background), .wp-block-button .wp-block-button__link:not(:hover):not(:active):not(.has-background), .wp-block-file a.wp-block-file__button:not(:hover):not(:active):not(.has-background) {
       background-color: unset;
       color: unset;
@@ -45,6 +49,8 @@
         transition: all 190ms ease-in-out;
         color: transparent;
         font-size: 1.5em;
+        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.72);
+        cursor: pointer;
 
         &:hover,
         &:focus {

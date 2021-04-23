@@ -76,7 +76,7 @@ class Viewer extends Component {
                             <div className="iiif-wp-viewer-inner">
                                 <Mirador config={config} plugins={plugins} />
                             </div>
-                            <a href="#" onClick={this.handleClick}>
+                            <a onClick={this.handleClick}>
                                 Close Viewer
                                 {this.state.active ? true : false}
                             </a>
@@ -100,7 +100,7 @@ class Viewer extends Component {
                         <div className="iiif-wp-preview">
                             <div className="iiif-wp-preview-inner">
                                 <img src={preview} alt={label} />
-                                <a href="#" onClick={this.handleClick}>
+                                <a onClick={this.handleClick}>
                                     Expand in Viewer
                                     {this.state.active ? true : false}
                                 </a>
