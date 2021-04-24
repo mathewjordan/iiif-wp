@@ -1,17 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import UVComponent from 'universalviewer'
 
-class UniversalViewer extends Component {
+export default class UniversalViewer extends Component {
+
+    constructor(props) {
+        super(props)
+    }
 
     render() {
 
-        const { manifest } = this.props;
+        console.log(this.props)
 
         return (
-            <div>
-                UV yall
-            </div>
+          <UVComponent
+            id="uv"
+            root="/static/uv"
+            configUri={{
+                "options": {
+                    "headerPanelEnabled": false,
+                    "termsOfUseEnabled": false
+                },
+                "modules": {
+                    "headerPanel": {
+                        "options": {
+                            "localeToggleEnabled": false
+                        }
+                    },
+                    "footerPanel": {
+                        "options": {
+                            "downloadEnabled": true
+                        }
+                    }
+                }
+            }}
+            manifest={this.props.manifest}
+          />
         );
     }
 }
-
-export default UniversalViewer;

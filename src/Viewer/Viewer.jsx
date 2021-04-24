@@ -8,7 +8,7 @@ class Viewer extends Component {
         super(props);
 
         this.state = {
-            active: false
+            active: true
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -84,7 +84,18 @@ class Viewer extends Component {
                     )
 
                 } else if (viewer === 'uv') {
-                    return <UniversalViewer manifest={manifest} />
+
+                    return (
+                      <React.Fragment>
+                          <div className="iiif-wp-viewer-inner">
+                              <UniversalViewer manifest={manifest} />
+                          </div>
+                          <a onClick={this.handleClick}>
+                              Close Viewer
+                              {this.state.active ? true : false}
+                          </a>
+                      </React.Fragment>
+                    )
 
                 } else {
                     return (
