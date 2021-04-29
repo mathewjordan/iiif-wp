@@ -68,7 +68,7 @@ endif;
          data-mode="<?php print $fields['mode']; ?>">
     </div>
     <?php if (Block::is_post_editor()) : ?>
-        <figure>
+        <figure style="display: flex; justify-content: center; flex-direction: column;">
             <img src="<?php print $preview; ?>"
                  alt="<?php print $label; ?>" />
             <figcaption>
