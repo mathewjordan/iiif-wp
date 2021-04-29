@@ -24,7 +24,7 @@ class Viewer extends Component {
             preview: container.getAttribute('data-preview'),
             summary: container.getAttribute('data-summary'),
             rights: container.getAttribute('data-rights'),
-            requiredStatement: JSON.parse(container.getAttribute('data-required-statement')),
+            requiredStatement: container.getAttribute('data-required-statement'),
             manifest: container.getAttribute('data-manifest'),
             viewer: container.getAttribute('data-viewer'),
             mode: container.getAttribute('data-mode')
@@ -114,7 +114,7 @@ class Viewer extends Component {
 
                     attribution = (
                       <div className="iiif-wp-attribution">
-                          {requiredStatement.label.en[0]}: {requiredStatement.value.en[0]}
+                          Attribution: {requiredStatement}
                       </div>
                     )
                 }

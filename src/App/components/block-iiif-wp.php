@@ -19,7 +19,7 @@ if (is_array($context)) :
         $label = $manifest->label->en[0];
         $summary = $manifest->summary->en[0];
         $rights = $manifest->rights;
-        $requiredStatement = json_encode($manifest->requiredStatement);
+        $requiredStatement = $manifest->requiredStatement->value->en[0];
         $canvas = $manifest->items[0]->items[0]->items[0]->body[0]->id;
         $preview = str_replace('/full/full', '/full/!640,640', $canvas);
     endif;
@@ -27,6 +27,8 @@ else :
     $presentation = 2;
     $label = $manifest->label;
     $summary = $manifest->decription;
+    $rights = $manifest->rights;
+    $requiredStatement = $manifest->attribution;
     $canvas = $manifest->sequences[0]->canvases[0]->images[0]->resource->{'@id'};
     $preview = str_replace('/full/full', '/full/640,640', $canvas);
 endif;
