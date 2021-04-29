@@ -23,6 +23,8 @@ class Viewer extends Component {
             label: container.getAttribute('data-label'),
             preview: container.getAttribute('data-preview'),
             summary: container.getAttribute('data-summary'),
+            rights: container.getAttribute('data-rights'),
+            requiredStatement: JSON.parse(container.getAttribute('data-required-statement')),
             manifest: container.getAttribute('data-manifest'),
             viewer: container.getAttribute('data-viewer'),
             mode: container.getAttribute('data-mode')
@@ -38,7 +40,7 @@ class Viewer extends Component {
 
     render() {
 
-        let {active, label, preview, summary, manifest, viewer, mode} = this.state
+        let {active, label, preview, summary, rights, requiredStatement, manifest, viewer, mode} = this.state
 
         if (this.props.blockId !== null) {
 
@@ -106,6 +108,17 @@ class Viewer extends Component {
                 }
             } else {
 
+                let attribution = null;
+
+                if (typeof(requiredStatement) !== 'undefined') {
+
+                    attribution = (
+                      <div className="iiif-wp-attribution">
+                          {requiredStatement.label.en[0]}: {requiredStatement.value.en[0]}
+                      </div>
+                    )
+                }
+
                 return (
                     <figure>
                         <div className="iiif-wp-preview">
@@ -120,6 +133,7 @@ class Viewer extends Component {
                         <figcaption>
                             <span><strong>{label}</strong></span>
                             <p>{summary}</p>
+                            {attribution}
                         </figcaption>
                     </figure>
                 )

@@ -18,6 +18,8 @@ if (is_array($context)) :
         $presentation = 3;
         $label = $manifest->label->en[0];
         $summary = $manifest->summary->en[0];
+        $rights = $manifest->rights;
+        $requiredStatement = json_encode($manifest->requiredStatement);
         $canvas = $manifest->items[0]->items[0]->items[0]->body[0]->id;
         $preview = str_replace('/full/full', '/full/!640,640', $canvas);
     endif;
@@ -37,6 +39,8 @@ endif;
          data-label="<?php print $label; ?>"
          data-preview="<?php print $preview; ?>"
          data-summary="<?php print $summary; ?>"
+         data-rights="<?php print $rights; ?>"
+         data-required-statement='<?php print $requiredStatement; ?>'
          data-manifest="<?php print $fields['manifest']; ?>"
          data-viewer="<?php print $fields['viewer']; ?>"
          data-mode="<?php print $fields['mode']; ?>">
