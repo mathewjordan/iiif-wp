@@ -26,7 +26,7 @@ if (is_array($context)) :
 else :
     $presentation = 2;
     $label = $manifest->label;
-    $summary = $manifest->decription;
+    $summary = $manifest->description;
     $rights = $manifest->rights;
     $requiredStatement = $manifest->attribution;
     $canvas = $manifest->sequences[0]->canvases[0]->images[0]->resource->{'@id'};
@@ -55,6 +55,11 @@ endif;
                 <span><strong><?php print $label; ?></strong></span>
                 <?php if ($summary) : ?>
                     <p><?php print $summary; ?></p>
+                <?php endif; ?>
+                <?php if ($requiredStatement) : ?>
+                    <div className="iiif-wp-attribution" style="font-size: 0.75em;">
+                        Attribution: <?php print $requiredStatement; ?>
+                    </div>
                 <?php endif; ?>
             </figcaption>
         </figure>
