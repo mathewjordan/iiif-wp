@@ -46,10 +46,6 @@ else :
         $requiredStatement = implode(', ', $array);
     }
 
-    function myFilter($var){
-        return ($var !== NULL && $var !== FALSE && $var !== "");
-    }
-
     if ($resource->width <= $previewSize || $resource->height <= $previewSize) {
         $preview = $resource->{'@id'};
     } else {
