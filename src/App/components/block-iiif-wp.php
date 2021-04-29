@@ -13,6 +13,8 @@ $manifest = json_decode(file_get_contents($uri));
 
 $context = $manifest->{'@context'};
 
+$previewSize = 640;
+
 if (is_array($context)) :
     if (in_array('https://iiif.io/api/presentation/3/context.json', $context)) :
         $presentation = 3;
@@ -20,8 +22,14 @@ if (is_array($context)) :
         $summary = $manifest->summary->en[0];
         $rights = $manifest->rights;
         $requiredStatement = $manifest->requiredStatement->value->en[0];
-        $canvas = $manifest->items[0]->items[0]->items[0]->body[0]->id;
-        $preview = str_replace('/full/full', '/full/!640,640', $canvas);
+        $itemBody = $manifest->items[0]->items[0]->items[0]->body[0];
+
+        if ($itemBody->width <= $previewSize || $itemBody->height <= $previewSize) {
+            $preview = $itemBody->id;
+        } else {
+            $preview = str_replace('/full/full', '/full/!' . $previewSize . ',' . $previewSize, $itemBody->id);
+        }
+
     endif;
 else :
     $presentation = 2;
@@ -29,8 +37,24 @@ else :
     $summary = $manifest->description;
     $rights = $manifest->rights;
     $requiredStatement = $manifest->attribution;
-    $canvas = $manifest->sequences[0]->canvases[0]->images[0]->resource->{'@id'};
-    $preview = str_replace('/full/full', '/full/640,640', $canvas);
+    $resource = $manifest->sequences[0]->canvases[0]->images[0]->resource;
+
+    if (is_array($requiredStatement)) {
+        $array = array_filter($requiredStatement, function ($var){
+            return ($var !== NULL && $var !== FALSE && $var !== "");
+        });
+        $requiredStatement = implode(', ', $array);
+    }
+
+    function myFilter($var){
+        return ($var !== NULL && $var !== FALSE && $var !== "");
+    }
+
+    if ($resource->width <= $previewSize || $resource->height <= $previewSize) {
+        $preview = $resource->{'@id'};
+    } else {
+        $preview = str_replace('/full/full', '/full/' . $previewSize . ',', $resource->{'@id'});
+    }
 endif;
 
 ?>
