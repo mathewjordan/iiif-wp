@@ -32,7 +32,9 @@ class Viewer extends Component {
 
     }
 
-    handleClick() {
+    handleClick(e) {
+        e.stopPropagation();
+        e.preventDefault();
         this.setState(state => ({
             active: !state.active
         }));
@@ -78,7 +80,10 @@ class Viewer extends Component {
                             <div className="iiif-wp-viewer-inner">
                                 <Mirador config={config} plugins={plugins} />
                             </div>
-                            <a onClick={this.handleClick}>
+                            <a tabIndex="0"
+                               href="#"
+                               aria-label={`Close Viewer for ${label}`}
+                               onClick={this.handleClick}>
                                 Close Viewer
                                 {this.state.active ? true : false}
                             </a>
@@ -92,7 +97,10 @@ class Viewer extends Component {
                           <div className="iiif-wp-viewer-inner">
                               <UniversalViewer manifest={manifest} />
                           </div>
-                          <a onClick={this.handleClick}>
+                          <a tabIndex="0"
+                             href="#"
+                             aria-label={`Close Viewer for ${label}`}
+                             onClick={this.handleClick}>
                               Close Viewer
                               {this.state.active ? true : false}
                           </a>
@@ -124,7 +132,10 @@ class Viewer extends Component {
                         <div className="iiif-wp-preview">
                             <div className="iiif-wp-preview-inner">
                                 <img src={preview} alt={label} />
-                                <a onClick={this.handleClick}>
+                                <a tabIndex="0"
+                                   href="#"
+                                   aria-label={`Expand ${label} in Viewer`}
+                                   onClick={this.handleClick}>
                                     Expand in Viewer
                                     {this.state.active ? true : false}
                                 </a>
