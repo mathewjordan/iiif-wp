@@ -18,8 +18,8 @@ $previewSize = 640;
 if (is_array($context)) :
     if (in_array('https://iiif.io/api/presentation/3/context.json', $context)) :
         $presentation = 3;
-        $label = $manifest->label->en[0];
-        $summary = $manifest->summary->en[0];
+        $label = str_replace('"', '&quot;', $manifest->label->en[0]);
+        $summary = str_replace('"', '&quot;', $manifest->summary->en[0]);
         $rights = $manifest->rights;
         $requiredStatement = $manifest->requiredStatement->value->en[0];
         $itemBody = $manifest->items[0]->items[0]->items[0]->body[0];
@@ -33,8 +33,8 @@ if (is_array($context)) :
     endif;
 else :
     $presentation = 2;
-    $label = $manifest->label;
-    $summary = $manifest->description;
+    $label = str_replace('"', '&quot;', $manifest->label);
+    $summary = str_replace('"', '&quot;', $manifest->description);
     $rights = $manifest->rights;
     $requiredStatement = $manifest->attribution;
     $resource = $manifest->sequences[0]->canvases[0]->images[0]->resource;
