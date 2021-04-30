@@ -6,3 +6,7 @@ node_modules
 
 # IDE
 .idea
+
+# Build
+assets
+assets/*
